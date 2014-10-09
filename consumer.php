@@ -145,6 +145,19 @@ function openid_begin_consumer($url) {
 function openid_start_login( $claimed_url, $action, $finish_url = null) {
 	if ( empty($claimed_url) ) return; // do nothing.
 
+    // Handle hiddenids.
+    if(substr($claimed_url, -6) === '.onion'){
+        // Make sure Tor is running.
+        exec("pgrep -x tor", $pids);
+        if(empty($pids)){
+            openid_status('error');
+            return openid_message(
+                __('Tor is not running, unable to authorize hiddenids')
+            );
+        }
+        // TODO Set curl opts to use Tor.
+    }
+
 	$auth_request = openid_begin_consumer( $claimed_url );
 
 	if ( null === $auth_request ) {
