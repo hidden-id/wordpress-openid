@@ -155,7 +155,19 @@ function openid_start_login( $claimed_url, $action, $finish_url = null) {
                 __('Tor is not running, unable to authorize hiddenids')
             );
         }
-        // TODO Set curl opts to use Tor.
+        // FIXME check IP, just for testing.
+        $c = curl_init();
+        curl_setopt ($c, CURLOPT_URL, 'icanhazip.com');
+        curl_setopt ($c, CURLOPT_CONNECTTIMEOUT,	10);
+        curl_setopt ($c, CURLOPT_TIMEOUT, 10);
+        curl_setopt ($c, CURLOPT_PROXY, 'http://127.0.0.1:9050/');
+        curl_setopt ($c, CURLOPT_PROXYPORT, 9050);
+        curl_setopt ($c, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+        curl_setopt ($c, CURLOPT_RETURNTRANSFER,	1);
+        $ip = curl_exec($c);
+        return openid_message(
+            __('I have '.$ip)
+        );
     }
 
 	$auth_request = openid_begin_consumer( $claimed_url );
