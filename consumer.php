@@ -146,7 +146,7 @@ function openid_start_login( $claimed_url, $action, $finish_url = null) {
 	if ( empty($claimed_url) ) return; // do nothing.
 
     // Handle hiddenids.
-    if(substr($claimed_url, -6) === '.onion'){
+    if(preg_match('/^(.*:\/\/)?[^\/]*\.onion($|[:\/])/', $claimed_url) === 1){
         // Make sure Tor is running.
         exec("pgrep -x tor", $pids);
         if(empty($pids)){
@@ -155,18 +155,18 @@ function openid_start_login( $claimed_url, $action, $finish_url = null) {
                 __('Tor is not running, unable to authorize hiddenids')
             );
         }
-        // FIXME check IP, just for testing.
+        // FIXME For now we just show that we can access hidden services.
         $c = curl_init();
-        curl_setopt ($c, CURLOPT_URL, 'icanhazip.com');
-        curl_setopt ($c, CURLOPT_CONNECTTIMEOUT,	10);
+        curl_setopt ($c, CURLOPT_URL, 'http://3g2upl4pq6kufc4m.onion');
+        curl_setopt ($c, CURLOPT_CONNECTTIMEOUT, 10);
         curl_setopt ($c, CURLOPT_TIMEOUT, 10);
         curl_setopt ($c, CURLOPT_PROXY, 'http://127.0.0.1:9050/');
         curl_setopt ($c, CURLOPT_PROXYPORT, 9050);
-        curl_setopt ($c, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-        curl_setopt ($c, CURLOPT_RETURNTRANSFER,	1);
-        $ip = curl_exec($c);
+        curl_setopt ($c, CURLOPT_PROXYTYPE, 7);
+        curl_setopt ($c, CURLOPT_RETURNTRANSFER, 1);
+        $onionshare = curl_exec($c);
         return openid_message(
-            __('I have '.$ip)
+            __('You are trying to use hiddenid, here are two copies of duckduck\'s hidden service instead').$onionshare
         );
     }
 
