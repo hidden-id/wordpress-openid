@@ -155,19 +155,7 @@ function openid_start_login( $claimed_url, $action, $finish_url = null) {
                 __('Tor is not running, unable to authorize hiddenids')
             );
         }
-        // FIXME For now we just show that we can access hidden services.
-        $c = curl_init();
-        curl_setopt ($c, CURLOPT_URL, 'http://3g2upl4pq6kufc4m.onion');
-        curl_setopt ($c, CURLOPT_CONNECTTIMEOUT, 10);
-        curl_setopt ($c, CURLOPT_TIMEOUT, 10);
-        curl_setopt ($c, CURLOPT_PROXY, 'http://127.0.0.1:9050/');
-        curl_setopt ($c, CURLOPT_PROXYPORT, 9050);
-        curl_setopt ($c, CURLOPT_PROXYTYPE, 7);
-        curl_setopt ($c, CURLOPT_RETURNTRANSFER, 1);
-        $onionshare = curl_exec($c);
-        return openid_message(
-            __('You are trying to use hiddenid, here are two copies of duckduck\'s hidden service instead').$onionshare
-        );
+        $GLOBALS['enable_hiddenid'] = true;
     }
 
 	$auth_request = openid_begin_consumer( $claimed_url );
