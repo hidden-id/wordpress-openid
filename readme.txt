@@ -1,3 +1,12 @@
+=== HiddenID-specific changes ===
+
+If the domain of an OpenID URL ends with .onion,
+we use a proxy at localhost:9050 for the request.
+We assume that there's tor running on that machine
+in order to provide that proxy (so run tor :) ).
+
+----------------------------------------------
+
 === OpenID ===
 Contributors: willnorris, factoryjoe
 Tags: openid, authentication, login, comments
