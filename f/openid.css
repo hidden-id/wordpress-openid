@@ -2,7 +2,8 @@
  * @see http://developer.yahoo.com/yui/compressor/
  */
 
-#openid_enabled_link, .openid_link, #openid_identifier, #commentform #openid_identifier {
+#openid_enabled_link, .openid_link, #openid_identifier, #commentform #openid_identifier,
+.recentcomments a.openid_link {
 	background-image: url('openid.gif');
 	background-position: 3px 50%;
 	background-repeat: no-repeat; 
