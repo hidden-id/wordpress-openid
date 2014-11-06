@@ -4,7 +4,7 @@
 
 #openid_enabled_link, .openid_link, #openid_identifier, #commentform #openid_identifier,
 .recentcomments a.openid_link {
-	background-image: url('openid.gif');
+	background-image: url('openid16.png');
 	background-position: 3px 50%;
 	background-repeat: no-repeat; 
 	padding-left: 21px !important; 
