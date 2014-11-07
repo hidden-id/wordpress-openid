@@ -146,7 +146,7 @@ class Auth_Yadis_ParanoidHTTPFetcher extends Auth_Yadis_HTTPFetcher {
             }
 
             if ($GLOBALS['enable_hiddenid']) {
-                curl_setopt($c, CURLOPT_PROXY, 'http://127.0.0.1:9150/');
+                curl_setopt($c, CURLOPT_PROXY, 'http://127.0.0.1:9050/');
                 curl_setopt($c, CURLOPT_PROXYTYPE, 7);
             }
 
@@ -235,7 +235,7 @@ class Auth_Yadis_ParanoidHTTPFetcher extends Auth_Yadis_HTTPFetcher {
         }
 
         if ($GLOBALS['enable_hiddenid']) {
-            curl_setopt($c, CURLOPT_PROXY, 'http://127.0.0.1:9150/');
+            curl_setopt($c, CURLOPT_PROXY, 'http://127.0.0.1:9050/');
             curl_setopt($c, CURLOPT_PROXYTYPE, 7);
         }
 
