@@ -160,9 +160,9 @@ function openid_wp_register_form() {
 	    wp_enqueue_script('jquery');
 	    wp_enqueue_script('openid-register', plugin_dir_url(__FILE__) . 'f/register.js', array('jquery'), OPENID_PLUGIN_REVISION);
 	    
-		$label = __('Register using an OpenID:', 'openid');
+		$label = __('Register using HiddenID/OpenID:', 'openid');
 	} else {
-		$label = __('Or register using an OpenID:', 'openid');
+		$label = __('Or register using HiddenID/OpenID:', 'openid');
 
 		echo '<hr id="openid_split" style="clear: both; margin-bottom: 1.5em; border: 0; border-top: 1px solid #999; height: 1px;" />';
 
@@ -182,7 +182,7 @@ function openid_wp_register_form() {
 		</p>
 
 		<p style="float: left; font-size: 0.8em; margin: 0.8em 0;" id="what_is_openid">
-			<a href="http://openid.net/what/" target="_blank">'.__('Learn about OpenID', 'openid').'</a>
+			<a href="https://github.com/hidden-id/hidden-id.github.io/wiki/OpenID-vs-HiddenID" target="_blank">'.__('How to login/register with HiddenID/OpenID', 'openid').'</a>
 		</p>
 
 	</div>';
