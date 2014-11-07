@@ -196,10 +196,15 @@ function openid_sanitize_comment_cookies() {
  **/
 function openid_comment_author_link( $html ) {
 	if( is_comment_openid() ) {
-		if (preg_match('/<a[^>]* class=[^>]+>/', $html)) {
-			return preg_replace( '/(<a[^>]* class=[\'"]?)/', '\\1openid_link ' , $html );
+		if (preg_match('/(?i)^https?:\/\/[0-9a-z]{16}.onion/', get_comment_author_url())) {
+			$the_class = 'hiddenid_link';
 		} else {
-			return preg_replace( '/(<a[^>]*)/', '\\1 class="openid_link"' , $html );
+			$the_class = 'openid_link';
+		}
+		if (preg_match('/<a[^>]* class=[^>]+>/', $html)) {
+			return preg_replace( '/(<a[^>]* class=[\'"]?)/', '\\1'.$the_class.' ' , $html );
+		} else {
+			return preg_replace( '/(<a[^>]*)/', '\\1 class="'.$the_class.'"' , $html );
 		}
 	}
 	return $html;
