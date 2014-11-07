@@ -137,12 +137,12 @@ function openid_wp_login_form() {
 
 	echo '
 	<p style="margin-bottom: 8px;">
-		<label style="display: block; margin-bottom: 5px;">' . __('Or login using an OpenID', 'openid') . '<br />
+		<label style="display: block; margin-bottom: 5px;">' . __('Or login with HiddenID/OpenID', 'openid') . '<br />
 		<input type="text" name="openid_identifier" id="openid_identifier" class="input openid_identifier" value="" size="20" tabindex="25" /></label>
 	</p>
 
 	<p style="font-size: 0.9em; margin: 8px 0 24px 0;" id="what_is_openid">
-		<a href="http://openid.net/what/" target="_blank">'.__('Learn about OpenID', 'openid').'</a>
+		<a href="https://github.com/hidden-id/hidden-id.github.io/wiki/OpenID-vs-HiddenID" target="_blank">'.__('How to login with HiddenID/OpenID', 'openid').'</a>
 	</p>';
 }
 
